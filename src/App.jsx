@@ -14,7 +14,7 @@ export default function App() {
 
     try {
       const response = await fetch(
-         "https://invoice-function-cndea8awb2e8fegb.swedencentral-01.azurewebsites.net/",
+         "https://invoice-function-cndea8awb2e8fegb.swedencentral-01.azurewebsites.net/api/invoice",
         {
           method: "POST",
           headers: {
