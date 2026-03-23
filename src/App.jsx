@@ -14,7 +14,7 @@ export default function App() {
 
     try {
       const response = await fetch(
-        "https://<YOUR-FUNCTION>.azurewebsites.net/api/<YOUR-FUNCTION-NAME>?code=<YOUR-FUNCTION-KEY>",
+         "https://<YOUR-FUNCTION>.azurewebsites.net/api/<YOUR-FUNCTION-NAME>?code=<YOUR-FUNCTION-KEY>",
         {
           method: "POST",
           headers: {
