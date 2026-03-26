@@ -1,0 +1,17 @@
+{
+  "routes": [
+    {
+      "route": "/api/*",
+      "backend": "externalApi"
+    }
+  ],
+  "backend": {
+    "externalApi": {
+      "target": "invoice-function-cndea8awb2e8fegb.swedencentral-01.azurewebsites.net",
+      "allowedStatusCodes": [400, 401, 403, 404, 500]
+    }
+  },
+  "globalHeaders": {
+    "Access-Control-Allow-Origin": "*"
+  }
+}
