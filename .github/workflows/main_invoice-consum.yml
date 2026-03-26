@@ -38,4 +38,3 @@ jobs:
           app-name: invoice-consum
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: ./api
-``
