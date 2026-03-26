@@ -10,13 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set up job
+        run: echo "Starting"
+
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Setup Python version
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
+      - name: Create and start virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
 
       - name: Install dependencies
         working-directory: ./api
@@ -30,3 +38,4 @@ jobs:
           app-name: invoice-consum
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: ./api
+``
