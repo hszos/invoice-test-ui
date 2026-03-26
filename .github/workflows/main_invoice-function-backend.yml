@@ -1,4 +1,4 @@
-name: Build and deploy Python Function App (Flex)
+name: Deploy Azure Function App (Flex)
 
 on:
   push:
@@ -13,24 +13,28 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set working directory to Function App
-      run: echo "Moved to api folder"
-      working-directory: ./api
-
-    - name: Setup Python
+    - name: Set up Python 3.10
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
 
     - name: Install dependencies
-      working-directory: ./api
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt --target="./.python_packages/lib/site-packages"
+        cd api
+        pip install --upgrade pip
+        pip install -r requirements.txt --target=".python_packages/lib/site-packages"
 
-    - name: Deploy to Azure Function App (Flex)
-      uses: azure/functions-action@v1
+    - name: Build Flex bundle
+      uses: azure/appservice-build@v3
       with:
-        app-name: invoice-function-backend
-        package: ./api
+        platform: python
+        platform-version: '3.10'
+        working-directory: './api'
+
+    - name: Deploy to Azure Function App Flex
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: 'invoice-function-backend'
+        slot-name: 'production'
+        package: './api'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
