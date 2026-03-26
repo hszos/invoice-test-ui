@@ -7,7 +7,7 @@
   ],
   "backend": {
     "externalApi": {
-      "target": "invoice-function-cndea8awb2e8fegb.swedencentral-01.azurewebsites.net",
+      "target": "invoice-function-backend.azurewebsites.net",
       "allowedStatusCodes": [400, 401, 403, 404, 500]
     }
   },
