@@ -201,7 +201,7 @@ def invoice(req: func.HttpRequest) -> func.HttpResponse:
                 headers=_cors_headers()
             )
 
-        # ---- 2) Polling bis 'succeeded' ----
+        # ---- 2) Polling bis 'succeeded' --------
         op_url = r.headers.get("Operation-Location")
         if not op_url:
             return func.HttpResponse("No Operation-Location header.", status_code=502, headers=_cors_headers())
